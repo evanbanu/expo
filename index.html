@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expo</title>
+
+    <!-- bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+
+
+    <!-- CSS -->
+    <style>
+      /* navbar */
+
+      .navbar {
+        background-color: #fff;
+        height: 80px;
+        margin: 20px;
+        border-radius: 16px;
+        padding: 0.5rem;
+      }
+
+      .navbar-brand {
+        font-weight: 500;
+        color: #344C64;
+        font-size: 24px;
+        transition: 0.3s color;
+      }
+
+      .login-button {
+        background-color: #344C64;
+        color: #fff;
+        font-size: 14px;
+        padding: 8px 20px;
+        border-radius: 50px;
+        text-decoration: none;
+        transition: 0.3s background-color;
+      }
+
+      .login-button:hover {
+        background-color:  #00b383;
+      }
+
+      .navbar-toggler {
+        border: none;
+        font-size: 1.25rem;
+      }
+
+      .navbar-toggler:focus,
+      .btn-close:focus {
+        box-shadow: none;
+        outline: none;
+      }
+
+      .nav-link {
+        color: #666777;
+        font-weight: 500;
+        position: relative;
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        color: #000;
+      }
+
+      @media (min-width: 991px) {
+        .nav-link::before {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 0;
+          height: 2px;
+          background-color: #009970;
+          visibility: hidden;
+          transition: 0.3s ease-in-out;
+        }
+
+        .nav-link:hover::before,
+        .nav-link.active::before {
+          width: 100%;
+          visibility: visible;
+        }
+      }
+
+      
+      .section1 {
+        background: url(images/background.png) no-repeat center;
+        background-size: cover;
+        width: 100%;
+      }
+
+      .section1::before {
+        background-color: rgba(0, 0, 0, 0.6);
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: -15px;
+        left: 0;
+      }
+      
+      .section1 .container {
+        height: 100vh;
+        z-index: 1;
+        position: relative;
+      }
+
+      .section1 h1 {
+        font-size: 1.5em;
+      }
+
+      .section h2 {
+        font-size: 1.2em;
+      }
+
+
+      /* profile */
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: linear-gradient(#240750 0%, #344C64 40%, #577B8D 100%);
+      }
+      h2 {
+        margin-bottom: 1rem;
+      }
+      p {
+        margin-bottom: 2rem;
+      }
+    .skills {
+        background-color: #f5f5f5;
+      }
+      .img-fluid {
+        max-width: 100%;
+        height: auto;
+      }
+    .rounded-circle {
+        border-radius: 50%;
+      }
+
+    .service-card {
+      margin-bottom: 20px;
+    }
+
+    #about h1 {
+      color: white;
+    }
+
+    #about h5 {
+      color: white;
+    }
+    
+    #about p {
+      color: white;
+    }
+
+    /* penjualan */
+    .container-jual {
+      background: linear-gradient(#240750 0%, #344C64 40%, #577B8D 100%);
+      padding-top: 100px;
+      
+    }
+
+    .container-sell {
+      padding-top: 100px;
+    }
+
+
+
+    /* Section 4 */
+    .container-content {
+      background: white;
+    }
+    
+    .container-isi {
+      padding-top: 100px;
+    }
+
+
+    .container-feedback {
+      background: white;
+    }
+
+    .ilustration-3 {
+      height: 250px;
+      margin-bottom: 30px
+    }
+    .ilustration-2 {
+      height: 450px;
+    }
+
+    .gambar {
+      animation: terbang 5s infinite;
+    }
+
+    @keyframes terbang {
+        50% {
+            transform: translate(0px, 20px) ;
+        }
+        100% {
+            transform: translate(0px, 0px) ;
+        }
+    }
+
+
+    </style>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+        <a class="navbar-brand me-auto" href="#">ProgHosting</a>
+        <div
+          class="offcanvas offcanvas-end"
+          tabindex="-1"
+          id="offcanvasNavbar"
+          aria-labelledby="offcanvasNavbarLabel"
+        >
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">ProgHosting</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a class="nav-link mx-lg-2 active" aria-current="page" href="#"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link mx-lg-2" href="#skills">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link mx-lg-2" href="#jual">Services</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link mx-lg-2" href="#porto">Portfolio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link mx-lg-2" href="#contact">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <a href="#" class="login-button">Login</a>
+        <button
+          class="navbar-toggler pe-0"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- navbar last -->
+
+    <!-- section1 -->
+    <section class="section1">
+      <div class="container d-flex align-items-center justify-content-center fs-1 text-white flex-column">
+        <h1>ProgHosting</h1>
+        <h2>Melayani pemrograman dan hosting web</h2>
+      </div>
+    </section>
+
+
+      <!-- section2 -->
+      <section id="about" class="py-5" data-aos="fade-up" data-aos-duration="3000">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <h1>Evan</h1>
+              <h5>Full Stack developer</h5>
+              <p>
+                Sebagai seorang full stack developer yang berpengalaman, saya telah mengabdikan diri dalam dunia pengembangan perangkat lunak dengan 
+                keterampilan yang komprehensif di berbagai aspek teknologi. Dengan latar belakang yang kuat dalam pengembangan front-end dan back-end,
+                saya mampu mengembangkan solusi aplikasi yang efisien dan berkualitas tinggi.
+              </p>
+            </div>
+            <div class="col-md-6" id="porto">
+              <img
+                src="images/evan.jpg"
+                alt="Profile Picture"
+                class="gambar img-fluid rounded-circle"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffffff" fill-opacity="1" d="M0,160L30,165.3C60,171,120,181,180,160C240,139,300,85,360,101.3C420,117,480,203,540,229.3C600,256,660,224,720,208C780,192,840,192,900,208C960,224,1020,256,1080,229.3C1140,203,1200,117,1260,80C1320,43,1380,53,1410,58.7L1440,64L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"></path></svg>
+
+      <section id="skills" class="skill py-5 bg-light">
+        <div class="container">
+          <h2>Skill dan Pengalaman</h2>
+          <div class="row">
+            <div class="col-md-4" data-aos="fade-right" data-aos-duration="1000">
+              <h3>Pengembangan Front-End</h3>
+              <p>
+                Menguasai HTML, CSS, dan JavaScript.
+                Berpengalaman dengan framework seperti React, Angular, dan Vue.js.
+                Mampu menciptakan antarmuka pengguna yang responsif dan ramah pengguna.
+              </p>
+            </div>
+            <div class="col-md-4" data-aos="zoom-out" data-aos-duration="1000">
+              <h3>Pengembangan Back-End</h3>
+              <p>
+                Menguasai bahasa pemrograman seperti Python, Java, dan Node.js.
+                Berpengalaman dalam menggunakan framework seperti Django, Spring Boot, dan Express.js.
+                Terampil dalam merancang dan mengelola API RESTful dan GraphQL.
+              </p>
+            </div>
+            <div class="col-md-4" data-aos="fade-left" data-aos-duration="1000">
+              <h3>Manajemen Basis Data</h3>
+              <p>
+                Berpengalaman dengan sistem manajemen basis data seperti MySQL, PostgreSQL, dan MongoDB.
+                Mampu merancang skema database yang efisien dan mengoptimalkan kinerja query. 
+              </p>
+            </div>
+            <div class="col-md-4" data-aos="fade-right" data-aos-duration="1000">
+              <h3>Pengembangan Aplikasi E-Commerce Skala Besar</h3>
+              <p>
+                Berhasil mengembangkan dan meluncurkan aplikasi e-commerce yang kini
+                digunakan oleh lebih dari 10.000 pengguna aktif setiap hari. Aplikasi ini 
+                mencakup fitur-fitur lengkap seperti manajemen produk, integrasi pembayaran, dan analisis penjualan.
+              </p>
+            </div>
+            <div class="col-md-4" data-aos="zoom-out" data-aos-duration="1000">
+              <h3>Kontribusi Open Source</h3>
+              <p>
+                Aktif berkontribusi dalam komunitas open source dengan mengembangkan dan merilis 
+                beberapa pustaka dan alat yang digunakan oleh pengembang di seluruh dunia.
+              </p>
+            </div>
+            <div class="col-md-4" data-aos="fade-left" data-aos-duration="1000">
+              <h3>Proyek Transformasi Digital Perusahaan</h3>
+              <p>
+                Memimpin tim pengembangan dalam proyek transformasi digital untuk sebuah perusahaan besar, mengubah sistem lama 
+                menjadi platform digital modern yang meningkatkan efisiensi operasional dan pengalaman pengguna.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- section2 last -->
+
+      <!-- section3 -->
+      <section class="container-jual row section-bg-custom py-5" id="jual">
+        <div class="container-sell col text-center text-white" data-aos="fade-up" data-aos-duration="1200">
+          <h1>Paket Web Hosting Untuk Website Anda</h1>
+          <div class="row justify-content-center">
+            <div class="col-sm-5">
+              <p class="lead text-white">
+                <small>Pilih paket web hosting anda lebih tenang dan nyaman dengan jaminan 30 hari uang kembali.</small>
+              </p>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-sm-2">
+              <div class="card">
+                <div class="card-body" style="text-align: left;">
+                  <h5>Standar</h5>
+                  <small class="text-muted">Untuk blog dan website sederhana</small>
+                  <div class="my-4">
+                    <div class="badge bg-success">Online</div>
+                  </div>
+                  <div class="text-muted">Fitur Unggulan</div>
+                  <div class="d-flex flex-row justify-content-between">
+                    <div class="d-flex flex-row">
+                      <div class="p-2">
+                        <i class="bi-check-circle-fill" style="color: #00ab11;"></i>
+                      </div>
+                      <div class="p-2">Performa Standar</div>
+                    </div>
+                    <div class="p-2">
+                      <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover focus" data-bs-content="Performa Standar cocok untuk membuat web">
+                        <i class="bi-question-circle-fill"></i>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="d-flex flex-row justify-content-between">
+                    <div class="d-flex flex-row">
+                      <div class="p-2">
+                        <i class="bi-check-circle-fill" style="color: #00ab11;"></i>
+                      </div>
+                      <div class="p-2">Unlimited Bandwidth</div>
+                    </div>
+                    <div class="p-2">
+                      <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover focus" data-bs-content="Optimalkan Website hosting tanpa perlu khawatir jumlah trafik melebih batas bandwidth">
+                        <i class="bi-question-circle-fill"></i>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="d-flex flex-row justify-content-between">
+                    <div class="d-flex flex-row">
+                      <div class="p-2">
+                        <i class="bi-check-circle-fill" style="color: #00ab11;"></i>
+                      </div>
+                      <div class="p-2">Alamat IP Dedicated</div>
+                    </div>
+                    <div class="p-2">
+                      <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover focus" data-bs-content="Lebih aman: jika punya IP sendiri, karena tidak perlu berbagi dengan IP website lain">
+                        <i class="bi-question-circle-fill"></i>
+                      </span>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="text-center">
+                    <button class="btn btn-primary">Info Fitur</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="card">
+                <div class="card-body" style="text-align: left;">
+                  <h5>Bisnis</h5>
+                  <small class="text-muted">Untuk website bisnis dan toko online</small>
+                  <div class="my-4">
+                    <div class="badge bg-success">Online</div>
+                  </div>
+                  <div class="text-muted">Fitur Unggulan</div>
+                  <div class="d-flex flex-row justify-content-between">
+                    <div class="d-flex flex-row">
+                      <div class="p-2">
+                        <i class="bi-check-circle-fill" style="color: #00ab11;"></i>
+                      </div>
+                      <div class="p-2">Performa 5x lebih cepat</div>
+                    </div>
+                    <div class="p-2">
+                      <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover focus" data-bs-content="Performa lebih cepat">
+                        <i class="bi-question-circle-fill"></i>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="d-flex flex-row justify-content-between">
+                    <div class="d-flex flex-row">
+                      <div class="p-2">
+                        <i class="bi-check-circle-fill" style="color: #00ab11;"></i>
+                      </div>
+                      <div class="p-2"><strong>200 GB</strong> NVMe storage</div>
+                    </div>
+                    <div class="p-2">
+                      <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover focus" data-bs-content="Storage yang besar">
+                        <i class="bi-question-circle-fill"></i>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="d-flex flex-row justify-content-between">
+                    <div class="d-flex flex-row">
+                      <div class="p-2">
+                        <i class="bi-check-circle-fill" style="color: #00ab11;"></i>
+                      </div>
+                      <div class="p-2">Alamat IP Dedicated</div>
+                    </div>
+                    <div class="p-2">
+                      <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover focus" data-bs-content="Lebih aman: jika punya IP sendiri, karena tidak perlu berbagi dengan IP website lain">
+                        <i class="bi-question-circle-fill"></i>
+                      </span>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="text-center">
+                    <button class="btn btn-primary">Info Fitur</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="card">
+                <div class="card-body" style="text-align: left;">
+                  <h5>Full Paket</h5>
+                  <small class="text-muted">Dapatkan powerful resource & performa website yang optimal</small>
+                  <div class="my-4">
+                    <div class="badge bg-success">Online</div>
+                  </div>
+                  <div class="text-muted">Fitur Unggulan</div>
+                  <div class="d-flex flex-row justify-content-between">
+                    <div class="d-flex flex-row">
+                      <div class="p-2">
+                        <i class="bi-check-circle-fill" style="color: #00ab11"></i>
+                      </div>
+                      <div class="p-2">Performa 10x lebih cepat</div>
+                    </div>
+                    <div class="p-2">
+                      <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover focus" data-bs-content="Performa Sangat Cepat">
+                        <i class="bi-question-circle-fill"></i>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="d-flex flex-row justify-content-between">
+                    <div class="d-flex flex-row">
+                      <div class="p-2">
+                        <i class="bi-check-circle-fill" style="color: #00ab11;"></i>
+                      </div>
+                      <div class="p-2">Alamat IP Dedicated</div>
+                    </div>
+                    <div class="p-2">
+                      <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover focus" data-bs-content="Lebih aman: jika punya IP sendiri, karena tidak perlu berbagi dengan IP website lain">
+                        <i class="bi-question-circle-fill"></i>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="d-flex flex-row justify-content-between">
+                    <div class="d-flex flex-row">
+                      <div class="p-2">
+                        <i class="bi-check-circle-fill" style="color: #00ab11;"></i>
+                      </div>
+                      <div class="p-2"><strong>200 GB</strong>NVMe storage</div>
+                    </div>
+                    <div class="p-2">
+                      <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="hover focus" data-bs-content="Storage yang besar">
+                        <i class="bi-question-circle-fill"></i>
+                      </span>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="text-center">
+                    <button class="btn btn-primary">Info Fitur</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- section3 last -->
+
+      <!-- section 4 -->
+      <section class="container-content row section-bg-custom justify-content-center py-5">
+        <div class="container-isi col-sm-8">
+          <div class="row">
+            <div class="col-sm-6 text-center" data-aos="fade-right" data-aos-duration="1000">
+              <img src="images/ilustrasi/anime1.svg" alt="ilustration-3" class="ilustration-3">
+            </div>
+            <div class="col-sm-6 section5-1">
+              <h5 class="text-muted"></h5>
+              <h1>Keahlian dalam Berbagai Bahasa Pemrograman.</h1>
+              <p>Seorang full stack developer biasanya menguasai beberapa bahasa pemrograman, termasuk HTML, CSS, JavaScript, serta bahasa back-end seperti Python, Ruby, PHP, atau Java. Ini memberikan mereka kemampuan untuk bekerja dengan berbagai teknologi dan framework.</p>
+            </div>
+          </div>
+          <div class="row my-5">
+            <div class="col-sm-6 text-center order-md-last" data-aos="fade-left" data-aos-duration="1000">
+              <img src="images/ilustrasi/anime2.svg" alt="ilustration-4" class="ilustration-3" height="120px">
+            </div>
+            <div class="col-sm-6 section5-1">
+              <h5 class="text-muted"></h5>
+              <h1>Kontribusi pada Proyek Open Source</h1>
+              <p>Banyak full stack developers yang aktif berkontribusi pada proyek open source. Kontribusi ini tidak hanya membantu komunitas developer, tetapi juga membantu mereka meningkatkan keterampilan dan mendapatkan pengakuan di industri</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 text-center" data-aos="fade-right" data-aos-duration="1000">
+              <img src="images/ilustrasi/anime3.svg" alt="ilustration-5" class="ilustration-3">
+            </div>
+            <div class="col-sm-6 section5-1">
+              <h5 class="text-muted"></h5>
+              <h1>Kemampuan untuk Mengelola Proyek End-to-End </h1>
+              <p>Full stack developers seringkali mampu menangani proyek dari tahap konsep hingga deployment, termasuk desain arsitektur, pengembangan, pengujian, dan pemeliharaan.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="container-feedback row py-5" id="contact">
+        <div class="col text-center">
+          <strong></strong>
+          <h1>Kirimkan Feedback mu</h1>
+          <div class="lead mb-4">Jika ada masalah dan kesalahan terhadap pembelian atau server hosting kamu</div>
+          <div class="row justify-content-center">
+            <div class="col-sm-5">
+              <div class="row">
+                <div class="col-sm-9 mb-3">
+                  <input type="text" class="form-control" placeholder="Tuliskan pesanmu">
+                </div>
+                <div class="col-sm-3 mb-3">
+                  <button class="btn btn-warning">Send</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- section 4 last -->
+
+
+
+      <!-- footer -->
+      <section>
+        <footer class="bg-dark text-white pt-5 pb-4">
+
+          <div class="container-footer text-center text-md-left">
+            
+            <div class="row text-center text-md-left">
+              
+              <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 font-weight-bold text-warning">ProgHosting</h5>
+                <p>ProgHosting adalah sebuah perusahaan yang bergerak di bidang hosting dan jasa pembuatan website. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut culpa sunt hic odio expedita vero.</p>
+
+              </div>
+
+              <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Products</h5>
+                <p>
+                  <a href="#" class="text-white" style="text-decoration: none;">Hosting web</a>
+                </p>
+                <p> 
+                  <a href="#" class="text-white" style="text-decoration: none;">Creativity web</a>
+                </p>
+                <p>
+                  <a href="#" class="text-white" style="text-decoration: none;">Source files</a>
+                </p>
+                <p>
+                  <a href="#" class="text-white" style="text-decoration: none;">Hosting game</a>
+                </p>
+
+              </div>
+
+              <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Social media</h5>
+                <p>
+                  <p>
+                    <a href="#" class="text-white" style="text-decoration: none;">Email</a>
+                  </p>
+                  <p> 
+                    <a href="#" class="text-white" style="text-decoration: none;">Instagram</a>
+                  </p>
+                  <p>
+                    <a href="#" class="text-white" style="text-decoration: none;">Facebook</a>
+                  </p>
+                  <p>
+                    <a href="#" class="text-white" style="text-decoration: none;">Discord</a>
+                  </p>
+                  <p>
+                    <a href="#" class="text-white" style="text-decoration: none;">Twitter</a>
+                  </p>
+                </p>
+              </div>
+
+              <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Contact</h5>
+                <p>
+                  <i class="fas fa-home mr-3"></i>Bogor, Cibinong
+                </p>
+                <p>
+                  <i class="fas fa-envelope mr-3"></i>evanbantal2@gmail.com
+                </p>
+                <p>
+                  <i class="fas fa-phone mr-3"></i>+62 838 7220 0197
+                </p>
+                
+              </div>
+
+            </div> 
+
+            <hr class="mb-4">
+            
+            <div class="row align-items-center">
+
+              <div class="col-md-7 col-lg-8">
+                <p>Copyright ©2024 All rights reserved by:
+                  <a href="#" style="text-decoration: none;"class="text-warning"><strong class="text-warning">ProgHosting</strong></a>
+                </p>
+
+              </div>
+
+              <div class="col-md-5 col-lg-4">
+                <div class="text-center text-md-right">
+                    <ul class="list-unstyled list-inline">
+                      <li class="list-inline-item">
+                        <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i class="fab fa-facebook"></i></a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i class="fab fa-twitter"></i></a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i class="fab fa-google-plus"></i></a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i class="fab fa-discord"></i></a>
+                      </li>
+                    </ul>
+                </div> 
+
+              </div>
+
+
+
+            </div>
+
+
+          </div>
+
+
+        </footer>
+
+      </section>
+  
+    
+    
+    
+
+    <!-- bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </body>
+</html>
